@@ -1,0 +1,24 @@
+{
+  "name": "nestjs-tree-locations",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "forwardPorts": [
+    3000,
+    5432,
+    80
+  ],
+  "workspaceFolder": "/nestjs-tree-locations",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true
+      }
+    }
+  },
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind,consistency=cached"
+  ],
+  "initializeCommand": "npm install",
+  "remoteUser": "node",
+  "containerUser": "node"
+}

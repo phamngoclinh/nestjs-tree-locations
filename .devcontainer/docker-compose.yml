@@ -1,0 +1,54 @@
+version: '3.9'
+
+services:
+  app:
+    # container_name: nestjs-tree-locations-app
+    image: nestjs-tree-locations:app
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/nestjs-tree-locations:cached
+      - //var/run/docker.sock://var/run/docker.sock:cached
+    command: sleep infinity
+    ports:
+      - 3001:3000
+    env_file:
+      - ./.env.development
+    networks:
+      - shared-network
+
+  postgresdb:
+    # container_name: nestjs-tree-locations-postgres
+    image: postgres:16.0
+    restart: always
+    ports:
+      - 5433:5432
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - ../pgdata/data:/var/lib/postgres/data
+      - ./init-db.d:/docker-entrypoint-initdb.d
+    networks:
+      - shared-network
+
+  pgadmin:
+    # container_name: nestjs-tree-locations-pgadmin
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=myemail@some.com
+      - PGADMIN_DEFAULT_PASSWORD=123456
+    ports:
+      - 5050:80
+    depends_on:
+      - postgresdb
+    restart: always
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    external: true
