@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, Tree, TreeChildren, TreeParent } from 'typeorm';
 
 @Entity()
+@Tree("closure-table")
 export class Location {
   @PrimaryGeneratedColumn()
   id: number;
@@ -8,7 +9,7 @@ export class Location {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ unique: true })
   code: string;
 
   @Column()
@@ -16,4 +17,10 @@ export class Location {
 
   @Column()
   area: number;
+
+  @TreeChildren()
+  children: Location[]
+
+  @TreeParent()
+  parent: Location
 }

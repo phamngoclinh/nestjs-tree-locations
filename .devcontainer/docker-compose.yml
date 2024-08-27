@@ -16,7 +16,7 @@ services:
     env_file:
       - ./.env.development
     networks:
-      - shared-network
+      - shared_network
 
   postgresdb:
     # container_name: nestjs-tree-locations-postgres
@@ -33,7 +33,7 @@ services:
       - ../pgdata/data:/var/lib/postgres/data
       - ./init-db.d:/docker-entrypoint-initdb.d
     networks:
-      - shared-network
+      - shared_network
 
   pgadmin:
     # container_name: nestjs-tree-locations-pgadmin
@@ -47,8 +47,7 @@ services:
       - postgresdb
     restart: always
     networks:
-      - shared-network
+      - shared_network
 
 networks:
-  shared-network:
-    external: true
+  shared_network:
