@@ -1,7 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn, Tree, TreeChildren, TreeParent } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, Tree, TreeChildren, TreeParent, Unique } from 'typeorm';
 
 @Entity()
 @Tree("closure-table")
+@Unique('UQ_CODE', ['code'])
 export class Location {
   @PrimaryGeneratedColumn()
   id: number;
@@ -9,7 +10,7 @@ export class Location {
   @Column()
   name: string;
 
-  @Column({ unique: true })
+  @Column()
   code: string;
 
   @Column()

@@ -1,3 +1,4 @@
+import { LoggerModule } from '@app/logger/logger.module';
 import { UsersModule } from '@app/users/users.module';
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
@@ -7,6 +8,7 @@ import { jwtConstants } from './constants';
 
 @Module({
   imports: [
+    LoggerModule,
     UsersModule,
     JwtModule.register({
       global: true,

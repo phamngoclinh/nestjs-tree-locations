@@ -20,7 +20,10 @@ export class AllExceptionsFilter implements ExceptionFilter {
     exception instanceof HttpException
         ? exception.getStatus()
         : HttpStatus.INTERNAL_SERVER_ERROR;
-    let message = exception.message || 'Internal server error'
+    let message = (exception?.response?.message && Array.isArray(exception.response.message) && exception.response.message.pop())
+      || exception?.response?.message
+      || exception.message
+      || 'Internal server error';
     let code = String(httpStatusCode);
 
     if (exception instanceof ApplicationException) {

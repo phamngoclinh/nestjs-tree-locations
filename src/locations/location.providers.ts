@@ -4,7 +4,7 @@ import { Location } from './entities/location.entity';
 export const locationProviders = [
   {
     provide: 'LOCATION_REPOSITORY',
-    useFactory: (dataSource: DataSource) => dataSource.getRepository(Location),
+    useFactory: (dataSource: DataSource) => dataSource.getTreeRepository(Location),
     inject: [DataSource],
   },
 ];

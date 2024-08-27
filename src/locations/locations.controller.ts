@@ -1,4 +1,6 @@
+import { UserDecorator } from '@app/auth/auth.decorator';
 import { AuthGuard } from '@app/auth/auth.guard';
+import { AuthenticatedUser } from '@app/auth/auth.interface';
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { CreateLocationDto } from './dto/create-location.dto';
 import { UpdateLocationDto } from './dto/update-location.dto';
@@ -10,8 +12,8 @@ export class LocationsController {
 
   @UseGuards(AuthGuard)
   @Post()
-  create(@Body() createLocationDto: CreateLocationDto) {
-    return this.locationsService.create(createLocationDto);
+  create(@Body() createLocationDto: CreateLocationDto, @UserDecorator() user: AuthenticatedUser) {
+    return this.locationsService.create(createLocationDto, user);
   }
 
   @UseGuards(AuthGuard)

@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { BaseDataSourceOptions } from 'typeorm/data-source/BaseDataSourceOptions';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LocationsModule } from './locations/locations.module';
-import { UsersModule } from './users/users.module';
-import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -17,10 +16,10 @@ import { AuthModule } from './auth/auth.module';
       database: process.env.DB_NAME,
       autoLoadEntities: true,
       synchronize: !!process.env.DB_SYNCHRONIZE,
+      logging: !!process.env.DB_LOGGING,
+      logger: process.env.DB_LOGGER as BaseDataSourceOptions['logger'],
     }),
-    UsersModule,
     LocationsModule,
-    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
