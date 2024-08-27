@@ -1,5 +1,5 @@
 import { Type } from "class-transformer";
-import { IsNotEmpty, IsString, IsUppercase, Min, MinLength, ValidateNested } from "class-validator";
+import { IsNotEmpty, IsOptional, IsString, IsUppercase, Min, MinLength, ValidateNested } from "class-validator";
 import { Location } from "../entities/location.entity";
 
 export class CreateLocationDto {
@@ -26,9 +26,10 @@ export class CreateLocationDto {
   @Type(() => CreateLocationDto)
   children: CreateLocationDto[];
 
-  @ValidateNested({ each: true })
-  @Type(() => CreateLocationDto)
-  parent: CreateLocationDto;
+  @IsUppercase()
+  @IsString()
+  @IsOptional()
+  parentCode: string;
 
   static toLocationEntity(from: CreateLocationDto): Location {
     const location = new Location();

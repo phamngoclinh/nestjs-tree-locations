@@ -5,7 +5,7 @@ import { DataSource, QueryRunner, TreeRepository } from 'typeorm';
 import { CreateLocationDto } from './dto/create-location.dto';
 import { UpdateLocationDto } from './dto/update-location.dto';
 import { Location } from './entities/location.entity';
-import { LocationDuplicatedException } from './location.exception';
+import { LocationDuplicatedException, LocationNotFoundException } from './location.exception';
 
 @Injectable()
 export class LocationsService {
@@ -20,6 +20,10 @@ export class LocationsService {
     this.loggerService.setContext(LocationsService.name);
   }
 
+  /**
+   * Initialize database transaction
+   * @param command transaction command
+   */
   private async transaction(command: 'begin' | 'commit' | 'rollback' | 'release'): Promise<void> {
     if (command == 'begin') {
       this.queryRunner = this.dataSource.createQueryRunner();
@@ -34,6 +38,11 @@ export class LocationsService {
     }
   }
 
+  /**
+   * Create children locations of parent location
+   * @param parent parent location
+   * @param children children locations
+   */
   private async createSubLocation(parent: Location, children: CreateLocationDto[]) {
     for (let index = 0; index < children.length; index++) {
       const subLocation = CreateLocationDto.toLocationEntity(children[index]);
@@ -52,8 +61,20 @@ export class LocationsService {
       this.loggerService.log(`Start inserting location: ${JSON.stringify(createLocationDto)}`);
 
       const location = CreateLocationDto.toLocationEntity(createLocationDto);
+
+      // Check and assign parent location
+      if (createLocationDto.parentCode) {
+        const parent = await this.queryRunner.manager.findOneBy(Location, { code: createLocationDto.parentCode });
+        if (!parent) {
+          throw new LocationNotFoundException('ParentCode is invalid');
+        }
+        location.parent = parent;
+      }
+
+      // Save location
       const result = await this.queryRunner.manager.save(location);
 
+      // Check and create children locations
       if (createLocationDto?.children?.length) {
         await this.createSubLocation(result, createLocationDto.children);
       }
@@ -63,7 +84,6 @@ export class LocationsService {
       await this.transaction('commit');
 
       return await this.locationRepository.findDescendantsTree(result);
-
     } catch (ex) {
       await this.transaction('rollback');
       this.loggerService.error(`Failed inserting location: ${JSON.stringify(createLocationDto)}`, ex)
