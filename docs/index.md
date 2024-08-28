@@ -113,7 +113,7 @@ password = postgres
 
 ## Postman
 
-[Collection file](docs/postman/nestjs-tree-locations.postman_collection.json) for manually setup or quickly setup within document [here](https://documenter.getpostman.com/view/1114930/2sAXjJ6DBh)
+[Collection file](postman/nestjs-tree-locations.postman_collection.json) for manually setup or quickly setup within document [here](https://documenter.getpostman.com/view/1114930/2sAXjJ6DBh)
 
 **Steps to send request:**
 
