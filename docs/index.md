@@ -1,15 +1,17 @@
 # Project Installation and Running Guide
 
 ## Table of Contents
-1. [System Requirements](#system-requirements)
-2. [Clone the Project](#clone-the-project)
-3. [Install Dependencies](#install-dependencies)
-4. [Configure Environment Variables](#configure-environment-variables)
-5. [Setup database](#setup-database)
-6. [Running the Project](#running-the-project)
-7. [Running the Project using DevContainer (Recommended)](#running-the-project-using-devcontainer-recommended)
-8. [Postman](#postman)
-9. [Screenshots](#screenshots)
+1. [Features](features.md)
+2. [System Requirements](#system-requirements)
+3. [Clone the Project](#clone-the-project)
+4. [Install Dependencies](#install-dependencies)
+5. [Configure Environment Variables](#configure-environment-variables)
+6. [Setup database](#setup-database)
+7. [Running the Project](#running-the-project)
+8. [Running the Project using DevContainer (Recommended)](#running-the-project-using-devcontainer-recommended)
+9. [Postman](#postman)
+10. [Screenshots](#screenshots)
+11. [References](#references)
 
 ## System Requirements
 
@@ -127,3 +129,13 @@ Database:
 Postman:
 
 ![postman](images/postman.png)
+
+Docker:
+
+![docker](images/docker.png)
+
+
+## References
+- https://docs.nestjs.com/
+- https://typeorm.io/
+- https://code.visualstudio.com/docs/devcontainers/containers
