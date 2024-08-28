@@ -1,0 +1,1141 @@
+{
+	"info": {
+		"_postman_id": "8afcef21-67b7-4b97-a8da-96793846c230",
+		"name": "nestjs-tree-locations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37367606"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(pm.response.json().access_token)\r",
+							"\r",
+							"pm.environment.set(\"token\", pm.response.json().access_token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login - success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "192"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"c0-VUWbVGjOjrCVQ4vtlpIgEglAbX8\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Aug 2024 09:00:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiYWRtaW4iLCJpZCI6MSwiaWF0IjoxNzI0ODM1NjM2LCJleHAiOjE3MjQ4MzYyMzZ9.ElehZ4UDAXS7ILESi2-QEauihG4MExdv5XWlis8rOfE\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/auth/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"auth",
+						"profile"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get profile - 403",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/auth/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "101"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"65-ncz3+XMfUyhBnTVX0/hnoassdCo\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Aug 2024 09:44:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"401\",\n    \"message\": \"Unauthorized\",\n    \"timestamp\": \"2024-08-28T09:44:53.329Z\",\n    \"path\": \"/auth/profile\"\n}"
+				},
+				{
+					"name": "Get profile - success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/auth/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "69"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"45-vFjhkPEkuxxzmYL9TVwbTqWTCbc\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Aug 2024 09:45:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"sub\": 1,\n    \"username\": \"admin\",\n    \"id\": 1,\n    \"iat\": 1724838303,\n    \"exp\": 1724838903\n}"
+				}
+			]
+		},
+		{
+			"name": "Create location",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"building\": \"B\",\r\n    \"code\": \"B14\",\r\n    \"name\": \"Room B0\",\r\n    \"area\": 100,\r\n    \"children\": [\r\n        {\r\n            \"building\": \"B\",\r\n            \"code\": \"B14-01\",\r\n            \"name\": \"Room B0 01\",\r\n            \"area\": 100\r\n        },\r\n        {\r\n            \"building\": \"B\",\r\n            \"code\": \"B14-02\",\r\n            \"name\": \"Room B0 02\",\r\n            \"area\": 100\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"locations"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create location - success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"building\": \"B\",\r\n    \"code\": \"B14\",\r\n    \"name\": \"Room B0\",\r\n    \"area\": 100,\r\n    \"children\": [\r\n        {\r\n            \"building\": \"B\",\r\n            \"code\": \"B14-01\",\r\n            \"name\": \"Room B0 01\",\r\n            \"area\": 100\r\n        },\r\n        {\r\n            \"building\": \"B\",\r\n            \"code\": \"B14-02\",\r\n            \"name\": \"Room B0 02\",\r\n            \"area\": 100\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/locations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "247"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f7-9k/1nbeFsNR79sUfwvppdeqU0As\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Aug 2024 09:00:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"B14\",\n    \"name\": \"Room B0\",\n    \"building\": \"B\",\n    \"area\": 100,\n    \"id\": 1,\n    \"children\": [\n        {\n            \"id\": 2,\n            \"name\": \"Room B0 01\",\n            \"code\": \"B14-01\",\n            \"building\": \"B\",\n            \"area\": 100,\n            \"children\": []\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Room B0 02\",\n            \"code\": \"B14-02\",\n            \"building\": \"B\",\n            \"area\": 100,\n            \"children\": []\n        }\n    ]\n}"
+				},
+				{
+					"name": "Create location - duplicated code",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"building\": \"B\",\r\n    \"code\": \"B14\",\r\n    \"name\": \"Room B0\",\r\n    \"area\": 100,\r\n    \"children\": [\r\n        {\r\n            \"building\": \"B\",\r\n            \"code\": \"B14-01\",\r\n            \"name\": \"Room B0 01\",\r\n            \"area\": 100\r\n        },\r\n        {\r\n            \"building\": \"B\",\r\n            \"code\": \"B14-02\",\r\n            \"name\": \"Room B0 02\",\r\n            \"area\": 100\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/locations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "131"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"83-kMb+ss5H08XfVwNjdrACaPmbLZE\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Aug 2024 09:45:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"LOCATION_DUPLICATED\",\n    \"message\": \"Location number is duplicated\",\n    \"timestamp\": \"2024-08-28T09:45:20.277Z\",\n    \"path\": \"/locations\"\n}"
+				},
+				{
+					"name": "Create location - failed validation",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"building\": \"B\",\r\n    \"code\": \"b14\",\r\n    \"name\": \"Room B0\",\r\n    \"area\": 100,\r\n    \"children\": [\r\n        {\r\n            \"building\": \"B\",\r\n            \"code\": \"B14-01\",\r\n            \"name\": \"Room B0 01\",\r\n            \"area\": 100\r\n        },\r\n        {\r\n            \"building\": \"B\",\r\n            \"code\": \"B14-02\",\r\n            \"name\": \"Room B0 02\",\r\n            \"area\": 100\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/locations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "108"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6c-6JJWKcY+zOYoshXAExT3dJAsPZU\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Aug 2024 09:47:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"400\",\n    \"message\": \"code must be uppercase\",\n    \"timestamp\": \"2024-08-28T09:47:00.372Z\",\n    \"path\": \"/locations\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create location - Parent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"building\": \"B\",\r\n    \"code\": \"B14-06\",\r\n    \"name\": \"Room B0\",\r\n    \"area\": 100.01,\r\n    \"parentId\": 1,\r\n    \"children\": [\r\n        {\r\n            \"building\": \"B\",\r\n            \"code\": \"B14-06-012\",\r\n            \"name\": \"Room B0 01\",\r\n            \"area\": 100\r\n        },\r\n        {\r\n            \"building\": \"B\",\r\n            \"code\": \"B14-06-022\",\r\n            \"name\": \"Room B0 02\",\r\n            \"area\": 100\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"locations"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create location - Parent - success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"building\": \"B\",\r\n    \"code\": \"B14-05\",\r\n    \"name\": \"Room B0\",\r\n    \"area\": 100.01,\r\n    \"parentId\": 1,\r\n    \"children\": [\r\n        {\r\n            \"building\": \"B\",\r\n            \"code\": \"B14-05-012\",\r\n            \"name\": \"Room B0 01\",\r\n            \"area\": 100\r\n        },\r\n        {\r\n            \"building\": \"B\",\r\n            \"code\": \"B14-05-022\",\r\n            \"name\": \"Room B0 02\",\r\n            \"area\": 100\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/locations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "335"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"14f-t6wTNiJrvKyZoKJ8Lj65bBbfAQo\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Aug 2024 09:01:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"B14-05\",\n    \"name\": \"Room B0\",\n    \"building\": \"B\",\n    \"area\": 100.01,\n    \"parent\": {\n        \"id\": 1,\n        \"name\": \"Room B0\",\n        \"code\": \"B14\",\n        \"building\": \"B\",\n        \"area\": 100\n    },\n    \"id\": 4,\n    \"children\": [\n        {\n            \"id\": 5,\n            \"name\": \"Room B0 01\",\n            \"code\": \"B14-05-012\",\n            \"building\": \"B\",\n            \"area\": 100,\n            \"children\": []\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Room B0 02\",\n            \"code\": \"B14-05-022\",\n            \"building\": \"B\",\n            \"area\": 100,\n            \"children\": []\n        }\n    ]\n}"
+				},
+				{
+					"name": "Create location - Parent - duplicated code",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"building\": \"B\",\r\n    \"code\": \"B14-05\",\r\n    \"name\": \"Room B0\",\r\n    \"area\": 100.01,\r\n    \"parentId\": 1,\r\n    \"children\": [\r\n        {\r\n            \"building\": \"B\",\r\n            \"code\": \"B14-05-012\",\r\n            \"name\": \"Room B0 01\",\r\n            \"area\": 100\r\n        },\r\n        {\r\n            \"building\": \"B\",\r\n            \"code\": \"B14-05-022\",\r\n            \"name\": \"Room B0 02\",\r\n            \"area\": 100\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/locations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "131"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"83-iH4tWu5Yc3StH8MqUmy4P8INVoM\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Aug 2024 09:45:32 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"LOCATION_DUPLICATED\",\n    \"message\": \"Location number is duplicated\",\n    \"timestamp\": \"2024-08-28T09:45:32.822Z\",\n    \"path\": \"/locations\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all locations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"locations"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all locations - success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/locations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "511"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1ff-C1/RJkY9eRLjH+Riznndje/TxuU\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Aug 2024 09:01:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Room B0\",\n        \"code\": \"B14\",\n        \"building\": \"B\",\n        \"area\": 100,\n        \"children\": [\n            {\n                \"id\": 2,\n                \"name\": \"Room B0 01\",\n                \"code\": \"B14-01\",\n                \"building\": \"B\",\n                \"area\": 100,\n                \"children\": []\n            },\n            {\n                \"id\": 3,\n                \"name\": \"Room B0 02\",\n                \"code\": \"B14-02\",\n                \"building\": \"B\",\n                \"area\": 100,\n                \"children\": []\n            },\n            {\n                \"id\": 4,\n                \"name\": \"Room B0\",\n                \"code\": \"B14-05\",\n                \"building\": \"B\",\n                \"area\": 100.01,\n                \"children\": [\n                    {\n                        \"id\": 5,\n                        \"name\": \"Room B0 01\",\n                        \"code\": \"B14-05-012\",\n                        \"building\": \"B\",\n                        \"area\": 100,\n                        \"children\": []\n                    }\n                ]\n            },\n            {\n                \"id\": 6,\n                \"name\": \"Room B0 02\",\n                \"code\": \"B14-05-022\",\n                \"building\": \"B\",\n                \"area\": 100,\n                \"children\": []\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get one location",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/locations/1?depth=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"locations",
+						"1"
+					],
+					"query": [
+						{
+							"key": "depth",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get one location - success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/locations/1?depth=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"locations",
+								"1"
+							],
+							"query": [
+								{
+									"key": "depth",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "509"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1fd-eI5yo1NrbVq34PpijzJU8RUX7l8\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Aug 2024 09:01:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"name\": \"Room B0\",\n    \"code\": \"B14\",\n    \"building\": \"B\",\n    \"area\": 100,\n    \"children\": [\n        {\n            \"id\": 2,\n            \"name\": \"Room B0 01\",\n            \"code\": \"B14-01\",\n            \"building\": \"B\",\n            \"area\": 100,\n            \"children\": []\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Room B0 02\",\n            \"code\": \"B14-02\",\n            \"building\": \"B\",\n            \"area\": 100,\n            \"children\": []\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Room B0\",\n            \"code\": \"B14-05\",\n            \"building\": \"B\",\n            \"area\": 100.01,\n            \"children\": [\n                {\n                    \"id\": 5,\n                    \"name\": \"Room B0 01\",\n                    \"code\": \"B14-05-012\",\n                    \"building\": \"B\",\n                    \"area\": 100,\n                    \"children\": []\n                },\n                {\n                    \"id\": 6,\n                    \"name\": \"Room B0 02\",\n                    \"code\": \"B14-05-022\",\n                    \"building\": \"B\",\n                    \"area\": 100,\n                    \"children\": []\n                }\n            ]\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Update location",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"building\": \"B\",\r\n    \"code\": \"B0\",\r\n    \"name\": \"Room B0\",\r\n    \"area\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"locations"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update location - success",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"building\": \"B\",\r\n    \"code\": \"B0\",\r\n    \"name\": \"Room B0\",\r\n    \"area\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/locations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "508"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1fc-parSoiXM7MwdaYDmSFPNDaE7DvU\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Aug 2024 09:46:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"name\": \"Room B0\",\n    \"code\": \"B0\",\n    \"building\": \"B\",\n    \"area\": 100,\n    \"children\": [\n        {\n            \"id\": 2,\n            \"name\": \"Room B0 01\",\n            \"code\": \"B14-01\",\n            \"building\": \"B\",\n            \"area\": 100,\n            \"children\": []\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Room B0 02\",\n            \"code\": \"B14-02\",\n            \"building\": \"B\",\n            \"area\": 100,\n            \"children\": []\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Room B0\",\n            \"code\": \"B14-05\",\n            \"building\": \"B\",\n            \"area\": 100.01,\n            \"children\": [\n                {\n                    \"id\": 5,\n                    \"name\": \"Room B0 01\",\n                    \"code\": \"B14-05-012\",\n                    \"building\": \"B\",\n                    \"area\": 100,\n                    \"children\": []\n                }\n            ]\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Room B0 02\",\n            \"code\": \"B14-05-022\",\n            \"building\": \"B\",\n            \"area\": 100,\n            \"children\": []\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Update location - Parent",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 6,\r\n    \"parentId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"locations"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update location - success",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 6,\r\n    \"parentId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/locations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "161"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a1-KLQzJejJUR1/QcJywneKlkvEaek\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Aug 2024 09:47:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 6,\n    \"name\": \"Room B0 02\",\n    \"code\": \"B14-05-022\",\n    \"building\": \"B\",\n    \"area\": 100,\n    \"parent\": {\n        \"id\": 1,\n        \"name\": \"Room B0\",\n        \"code\": \"B0\",\n        \"building\": \"B\",\n        \"area\": 100\n    },\n    \"children\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete location",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 16,\r\n    \"descendant\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"locations"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete location - not found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 10,\r\n    \"descendant\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/locations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "122"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7a-VMexsMZjf9FijKNq4jZEhG6hIeo\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Aug 2024 08:18:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"LOCATION_NOT_FOUND\",\n    \"message\": \"Location is not found\",\n    \"timestamp\": \"2024-08-28T08:18:57.536Z\",\n    \"path\": \"/locations\"\n}"
+				},
+				{
+					"name": "Delete location - success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 16,\r\n    \"descendant\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/locations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "16"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10-sVfJQj54VHOAwj+hmq8RTMGcte8\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Aug 2024 09:48:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"deleted\": true\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
