@@ -1,9 +1,9 @@
-import { PartialType } from '@nestjs/mapped-types';
+import { PartialType, PickType } from '@nestjs/mapped-types';
+import { IsInt, IsNotEmpty } from 'class-validator';
 import { CreateLocationDto } from './create-location.dto';
-import { IsInt, Min } from 'class-validator';
 
-export class UpdateLocationDto extends PartialType(CreateLocationDto) {
-  @Min(0)
+export class UpdateLocationDto extends PartialType(PickType(CreateLocationDto, ['code', 'name', 'building', 'area', 'parentId'])) {
+  @IsNotEmpty()
   @IsInt()
   id: number;
 }

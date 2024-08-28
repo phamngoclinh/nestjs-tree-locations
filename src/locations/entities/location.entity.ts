@@ -16,7 +16,7 @@ export class Location {
   @Column()
   building: string;
 
-  @Column()
+  @Column('float')
   area: number;
 
   @TreeChildren()

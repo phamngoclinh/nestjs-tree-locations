@@ -1,9 +1,11 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BaseDataSourceOptions } from 'typeorm/data-source/BaseDataSourceOptions';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LocationsModule } from './locations/locations.module';
+import { LoggerMiddleware } from './logger/logger.middleware';
+import { LoggerModule } from './logger/logger.module';
 
 @Module({
   imports: [
@@ -19,9 +21,16 @@ import { LocationsModule } from './locations/locations.module';
       logging: !!process.env.DB_LOGGING,
       logger: process.env.DB_LOGGER as BaseDataSourceOptions['logger'],
     }),
+    LoggerModule,
     LocationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes('*');
+  }
+}

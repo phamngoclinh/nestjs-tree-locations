@@ -1,8 +1,9 @@
 import { UserDecorator } from '@app/auth/auth.decorator';
 import { AuthGuard } from '@app/auth/auth.guard';
 import { AuthenticatedUser } from '@app/auth/auth.interface';
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UseGuards } from '@nestjs/common';
 import { CreateLocationDto } from './dto/create-location.dto';
+import { RemoveLocationDto } from './dto/remove-location.dto';
 import { UpdateLocationDto } from './dto/update-location.dto';
 import { LocationsService } from './locations.service';
 
@@ -24,20 +25,19 @@ export class LocationsController {
 
   @UseGuards(AuthGuard)
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.locationsService.findOne(+id);
+  findOne(@Param('id') id: string, @Query('depth') depth: number = 1) {
+    return this.locationsService.findOne(+id, +depth);
   }
 
   @UseGuards(AuthGuard)
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateLocationDto: UpdateLocationDto) {
-    updateLocationDto.id = +id;
+  @Patch()
+  update(@Body() updateLocationDto: UpdateLocationDto) {
     return this.locationsService.update(updateLocationDto);
   }
 
   @UseGuards(AuthGuard)
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.locationsService.remove(+id);
+  @Delete()
+  remove(@Body() removeLocationDto: RemoveLocationDto) {
+    return this.locationsService.remove(removeLocationDto);
   }
 }

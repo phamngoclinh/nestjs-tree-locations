@@ -7,13 +7,13 @@ export class LocationNotFoundException extends ApplicationException {
 }
 
 export class LocationDuplicatedException extends ApplicationException {
-  constructor(message: string) {
+  constructor(message: string = 'Location is duplicated') {
     super('LOCATION_DUPLICATED', message);
   }
 }
 
 export class LocationInvalidException extends ApplicationException {
-  constructor(message: string) {
+  constructor(message: string = 'Location data is invalid') {
     super('LOCATION_INVALID', message);
   }
 }
